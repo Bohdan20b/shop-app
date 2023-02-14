@@ -1,6 +1,7 @@
 package model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class StickerPrinter {
     private static final String INVALID_PRODUCT_NAME = "INVALID_PRODUCT_NAME";
@@ -17,6 +18,7 @@ public class StickerPrinter {
         stringBuilder.append(WHITESPACE);
         if (validatePrice(price)) {
             BigDecimal finalPrice = price.multiply(BigDecimal.valueOf(tax)).add(price);
+            finalPrice = finalPrice.setScale(2, RoundingMode.CEILING);
             stringBuilder.append(finalPrice);
         } else {
             stringBuilder.append(INVALID_PRICE);
