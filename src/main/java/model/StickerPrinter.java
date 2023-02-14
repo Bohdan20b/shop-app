@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class StickerPrinter {
     private static final String INVALID_PRODUCT_NAME = "INVALID_PRODUCT_NAME";
     private static final String INVALID_PRICE = "INVALID_PRICE";
+    private static final String WHITESPACE = " ";
 
     public static String createSticker(String productName, BigDecimal price, float tax) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -13,7 +14,7 @@ public class StickerPrinter {
         } else {
             stringBuilder.append(INVALID_PRODUCT_NAME);
         }
-        stringBuilder.append(" ");
+        stringBuilder.append(WHITESPACE);
         if (validatePrice(price)) {
             BigDecimal finalPrice = price.multiply(BigDecimal.valueOf(tax));
             stringBuilder.append(finalPrice);
