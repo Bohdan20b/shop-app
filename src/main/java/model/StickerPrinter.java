@@ -16,7 +16,7 @@ public class StickerPrinter {
         }
         stringBuilder.append(WHITESPACE);
         if (validatePrice(price)) {
-            BigDecimal finalPrice = price.multiply(BigDecimal.valueOf(tax));
+            BigDecimal finalPrice = price.multiply(BigDecimal.valueOf(tax)).add(price);
             stringBuilder.append(finalPrice);
         } else {
             stringBuilder.append(INVALID_PRICE);
@@ -33,6 +33,6 @@ public class StickerPrinter {
     }
 
     public static void main(String[] args) {
-        System.out.println(StickerPrinter.createSticker("Milk", BigDecimal.valueOf(666), 0.75f));
+        System.out.println(StickerPrinter.createSticker("Milk", BigDecimal.valueOf(666), 0.15f));
     }
 }
